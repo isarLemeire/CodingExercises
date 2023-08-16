@@ -1,0 +1,30 @@
+Balk met lengte 10.500, breedte 5.100 en hoogte 3.200
+         met oppervlakte 206.940
+         met volume 171.360
+Balk met lengte 5.500, breedte 20.100 en hoogte 5.000
+         met oppervlakte 477.100
+         met volume 552.750
+Balk met lengte 40.000, breedte 10.000 en hoogte 8.500
+         met oppervlakte 1650.000
+         met volume 3400.000
+Balk met lengte 30.900, breedte 20.100 en hoogte 5.500
+         met oppervlakte 1803.180
+         met volume 3415.995
+Balk met lengte 30.000, breedte 10.000 en hoogte 8.000
+         met oppervlakte 1240.000
+         met volume 2400.000
+Balk met lengte 10.500, breedte 5.100 en hoogte 3.200
+         met oppervlakte 206.940
+         met volume 171.360
+Balk met lengte 5.500, breedte 20.100 en hoogte 5.000
+         met oppervlakte 477.100
+         met volume 552.750
+Balk met lengte 40.000, breedte 10.000 en hoogte 8.500
+         met oppervlakte 1650.000
+         met volume 3400.000
+Balk met lengte 30.900, breedte 20.100 en hoogte 5.500
+         met oppervlakte 1803.180
+         met volume 3415.995
+Balk met lengte 30.000, breedte 10.000 en hoogte 8.000
+         met oppervlakte 1240.000
+         met volume 2400.000

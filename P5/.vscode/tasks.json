@@ -1,0 +1,57 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-O0",
+                "-std=c++11",
+                "-Wall",
+                "-fsanitize=address",
+                "-fno-omit-frame-pointer",
+                "binary_search_tree.cpp",
+                "binary_search_tree_stl.cpp",
+                "binary_search_tree_template.cpp",
+                "computer.cpp",
+                "food.cpp",
+                "fruit.cpp",
+                "main.cpp",
+                "product.cpp",
+                "timestamp.cpp",
+                "vegetable.cpp",
+                "-o",
+                "binary_search_tree.exe",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "label": "run (+ build)",
+            "type": "shell",
+            "command": "./binary_search_tree.exe",
+            "dependsOn": [
+                "build"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                // Show and focus the terminal after running, so you can immediately type without having to click the terminal.
+                "focus": true,
+                "reveal": "always",
+            },
+        }
+    ]
+}

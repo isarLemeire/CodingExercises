@@ -1,0 +1,165 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build snake",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-O0",
+                "-Wall",
+                "-fsanitize=address",
+                "-fno-omit-frame-pointer",
+                "-fsanitize-recover=address",
+                "snake/main.c",
+                "snake/snake.c",
+                "-lncurses",
+                "-o",
+                "snake/snake.exe",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "label": "run (+ build) snake",
+            "type": "shell",
+            "command": "./snake/snake.exe",
+            "dependsOn": [ "build snake" ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                // Show and focus the terminal after running, so you can immediately play without having to click the terminal.
+                "focus": true,
+                "reveal": "always",
+            }
+        },
+        {
+            "label": "run (+ build) snake - ASAN logfile",
+            "type": "shell",
+            "command": "./snake/snake.exe",
+            "dependsOn": [ "build snake" ],
+            "options": {
+                "env": {
+                    "ASAN_OPTIONS": "log_path=asan.log"
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                // Show and focus the terminal after running, so you can immediately play without having to click the terminal.
+                "focus": true,
+                "reveal": "always",
+            }
+        },
+        {
+            "label": "run tests (+ build, *nix only) snake",
+            "type": "shell",
+            "command": "./snake/snake_test.exe",
+            "dependsOn": [ "build tests (*nix only) snake" ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "label": "build stack-heap-2",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-O0",
+                "-Wall",
+                "-fsanitize=address",
+                "-fno-omit-frame-pointer",
+                "-fsanitize-recover=address",
+                "stack-heap/stack-heap-2.c",
+                "-lncurses",
+                "-o",
+                "stack-heap/stack-heap-2.exe",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "label": "run (+ build) stack-heap-2",
+            "type": "shell",
+            "command": "./stack-heap/stack-heap-2.exe",
+            "dependsOn": [ "build stack-heap-2" ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                // Show and focus the terminal after running, so you can immediately play without having to click the terminal.
+                "focus": true,
+                "reveal": "always",
+            }
+        }, 
+        {
+            "label": "build stack-heap-3",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-O0",
+                "-Wall",
+                "stack-heap/stack-heap-3.c",
+                "-lncurses",
+                "-o",
+                "stack-heap/stack-heap-3.exe",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "label": "run (+ build) stack-heap-3",
+            "type": "shell",
+            "command": "./stack-heap/stack-heap-3.exe",
+            "dependsOn": [ "build stack-heap-3" ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                // Show and focus the terminal after running, so you can immediately play without having to click the terminal.
+                "focus": true,
+                "reveal": "always",
+            }
+        }
+    ]
+}

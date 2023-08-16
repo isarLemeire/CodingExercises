@@ -1,0 +1,47 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-O0",
+                "-std=c++11",
+                "-Wall",
+                "-fsanitize=address",
+                "-fno-omit-frame-pointer",
+                "main.cpp",
+				"sparse_matrix.cpp",
+                "-o",
+                "sparse_matrix.exe",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "label": "run (+ build)",
+            "type": "shell",
+            "command": "./sparse_matrix.exe",
+            "dependsOn": [ "build" ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                // Show and focus the terminal after running, so you can immediately type without having to click the terminal.
+                "focus": true,
+                "reveal": "always",
+            },
+        }
+    ]
+}

@@ -1,0 +1,47 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-O0",
+                "-Wall",
+                "-fsanitize=address",
+                "-fno-omit-frame-pointer",
+                "main.c",
+                "adfgx.c",
+                "-lm",
+                "-o",
+                "adfgx.exe",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "label": "run (+ build)",
+            "type": "shell",
+            "command": "./adfgx.exe",
+            "dependsOn": [ "build" ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                // Show and focus the terminal after running, so you can immediately play without having to click the terminal.
+                "focus": true,
+                "reveal": "always",
+            }
+        },
+    ]
+}

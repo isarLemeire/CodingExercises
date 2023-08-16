@@ -1,0 +1,206 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build ggd",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-O0",
+                "-Wall",
+                "-fsanitize=address",
+                "-fno-omit-frame-pointer",
+                "ggd.c",
+                "-o",
+                "ggd.exe",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "label": "run ggd (+ build)",
+            "type": "shell",
+            "command": "./ggd.exe",
+            "dependsOn": [ "build ggd" ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                // Show and focus the terminal after running, so you can immediately type without having to click the terminal.
+                "focus": true,
+                "reveal": "always",
+            },
+        },
+        {
+            "label": "build bereken-dosis",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-O0",
+                "-Wall",
+                "-fsanitize=address",
+                "-fno-omit-frame-pointer",
+                "bereken-dosis.c",
+                "-o",
+                "bereken-dosis.exe",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "label": "run bereken-dosis (+ build)",
+            "type": "shell",
+            "command": "./bereken-dosis.exe",
+            "dependsOn": [ "build bereken-dosis" ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                // Show and focus the terminal after running, so you can immediately type without having to click the terminal.
+                "focus": true,
+                "reveal": "always",
+            },
+        },
+        {
+            "label": "build pokemon-trader",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-O0",
+                "-Wall",
+                "-fsanitize=address",
+                "-fno-omit-frame-pointer",
+                "pokemon-trader.c",
+                "-o",
+                "pokemon-trader.exe",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "label": "run pokemon-trader (+ build)",
+            "type": "shell",
+            "command": "./pokemon-trader.exe",
+            "dependsOn": [ "build pokemon-trader" ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                // Show and focus the terminal after running, so you can immediately type without having to click the terminal.
+                "focus": true,
+                "reveal": "always",
+            },
+        },
+        {
+            "label": "build opteller",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-O0",
+                "-Wall",
+                "-fsanitize=address",
+                "-fno-omit-frame-pointer",
+                "opteller.c",
+                "-o",
+                "opteller.exe",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "label": "run opteller (+ build)",
+            "type": "shell",
+            "command": "./opteller.exe",
+            "dependsOn": [ "build opteller" ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                // Show and focus the terminal after running, so you can immediately type without having to click the terminal.
+                "focus": true,
+                "reveal": "always",
+            },
+        },
+        {
+            "label": "build balk",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-O0",
+                "-Wall",
+                "-fsanitize=address",
+                "-fno-omit-frame-pointer",
+                "balken.c",
+                "balk_functies.c",
+                "-o",
+                "balk.exe",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "label": "run balk (+ build)",
+            "type": "shell",
+            "command": "./balk.exe",
+            "dependsOn": [ "build balk" ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                // Show and focus the terminal after running, so you can immediately type without having to click the terminal.
+                "focus": true,
+                "reveal": "always",
+            },
+        },
+    ]
+}
