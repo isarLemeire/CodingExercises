@@ -10,10 +10,10 @@ char *pokemon_id_to_string(int pokemon_id){
     }
 }
 
-void trade(int first_pokemon, int second_pokemon) {
-    int temp = second_pokemon;
-    second_pokemon = first_pokemon;
-    first_pokemon = temp;
+void trade(int* first_pokemon, int* second_pokemon) {
+    int temp = *second_pokemon;
+    *second_pokemon = *first_pokemon;
+    *first_pokemon = temp;
 }
 
 int main() {
@@ -24,7 +24,7 @@ int main() {
     printf("\tAlice her pokemon: %s\n", pokemon_id_to_string(pokemon_alice));
     printf("\tBob his pokemon: %s\n", pokemon_id_to_string(pokemon_bob));
 
-    trade(pokemon_alice, pokemon_bob);
+    trade(&pokemon_alice, &pokemon_bob);
 
     printf("After the trade:\n");
     printf("\tAlice her pokemon: %s\n", pokemon_id_to_string(pokemon_alice));
