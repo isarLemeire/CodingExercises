@@ -24,44 +24,44 @@ int main()
     cout << "Elements added" << endl;
     m.print();
 
-    assert(m.add_element(6, 1, "wrong") == -3);
-    assert(m.add_element(3, 6, "wrong") == -2);
-    assert(m.add_element(3, -1, "wrong") == -2);
-    assert(m.add_element(1, 5, "wrong") == -1);
+    assert(m.add_element(6, 1, "wrong") == 0);
+    assert(m.add_element(3, 6, "wrong") == 0);
+    assert(m.add_element(3, -1, "wrong") == 0);
+    assert(m.add_element(1, 5, "wrong") == 0);
 
     string word;
     cout << endl << "Retrieved element" << endl;
-    assert(m.get(1, 4, word) == 0);
+    assert(m.get(1, 4, word) == 1);
     assert(word == "element14");
-    assert(m.get(6, 1, word) == -3);
-    assert(m.get(3, 6, word) == -2);
-    assert(m.get(3, -1, word) == -2);
-    assert(m.get(3, 3, word) == -1);
+    assert(m.get(6, 1, word) == 0);
+    assert(m.get(3, 6, word) == 0);
+    assert(m.get(3, -1, word) == 0);
+    assert(m.get(3, 3, word) == 0);
 
     m.remove_element(1, 4);
     m.remove_element(3, 2);
     cout << endl << "Removed elements (1, 4) and (3, 2)" << endl;
     m.print();
-    assert(m.get(1, 4, word) == -1);
-    assert(m.get(3, 2, word) == -1);
+    assert(m.get(1, 4, word) == 0);
+    assert(m.get(3, 2, word) == 0);
 
     m.transpose();
     cout << endl << "Transposed matrix" << endl;
     m.print();
-    assert(m.get(1, 4, word) == 0);
+    assert(m.get(1, 4, word) == 1);
     assert(word == "element41");
-    assert(m.get(5, 1, word) == 0);
+    assert(m.get(5, 1, word) == 1);
     assert(word == "element15");
-    assert(m.get(4, 5, word) == -1);
+    assert(m.get(4, 5, word) == 0);
 
 	Sparse_matrix k(m);
 	cout << endl << "Copy constructor" << endl;
 	k.print();
-	assert(k.get(1, 4, word) == 0);
+	assert(k.get(1, 4, word) == 1);
     assert(word == "element41");
-    assert(k.get(5, 1, word) == 0);
+    assert(k.get(5, 1, word) == 1);
     assert(word == "element15");
-    assert(k.get(4, 5, word) == -1);
+    assert(k.get(4, 5, word) == 0);
 
 	cout << endl << "Operator +" << endl;
 	Sparse_matrix l(2, 8);
