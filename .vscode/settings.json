@@ -49,5 +49,6 @@
         "ctime": "cpp",
         "chrono": "cpp",
         "ratio": "cpp"
+        "ostream": "cpp"
     }
 }
