@@ -6,7 +6,6 @@
         "utility": "c",
         "iterator": "cpp",
         "list": "cpp",
-        "ostream": "cpp",
         "atomic": "cpp",
         "cwchar": "cpp",
         "string": "cpp",
@@ -48,7 +47,7 @@
         "typeinfo": "cpp",
         "ctime": "cpp",
         "chrono": "cpp",
-        "ratio": "cpp"
+        "ratio": "cpp",
         "ostream": "cpp"
     }
 }
