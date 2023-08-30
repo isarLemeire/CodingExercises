@@ -1,2 +1,3 @@
 # Ignore files ending in .exe
 *.exe
+Thinkcell/*

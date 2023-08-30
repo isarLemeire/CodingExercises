@@ -4,6 +4,7 @@
 #include <time.h>
 #include <unistd.h>
 
+
 #include "snake.h"
 
 /*
@@ -35,7 +36,7 @@ int main(int argc, char *argv[]) {
     noecho();             // Don't echo any keypresses
     curs_set(FALSE);      // Don't display a cursor
     timeout(0);           // Non-blocking input (getchar() doesn't wait until user presses key)
-    keypad(stdscr, TRUE); // Enable arrow keys
+    //keypad(stdscr, TRUE); // Enable arrow keys
     cbreak();             // Disable line buffering (don't wait until newline to read a character)
 
     int action = NONE;

@@ -2,11 +2,14 @@
 #define _SNAKE_HEADER_
 
 #include <assert.h>
-#include <curses.h>
+//#include <curses.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+
+#define TRUE 1
+#define FALSE 0
 
 // ACTIONS
 #define NONE -1
