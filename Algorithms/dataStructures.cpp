@@ -188,46 +188,211 @@ public:
             head = next;
         }
     };
-
 };
 
 
+template<typename K, typename V>
+class BinaryTreeElement{
+public:
+    K key;
+    V value;
+    BinaryTreeElement<K, V>* left;
+    BinaryTreeElement<K, V>*right;
+    BinaryTreeElement<K, V>* parent;
+
+    BinaryTreeElement(K key, V value): key(key), value(value), left(nullptr), right(nullptr), parent(nullptr) {};
+};
+
+template<typename K, typename V>
+class BinaryTree{
+private:
+    
+    void printTreeInOrder(BinaryTreeElement<K, V>* node, int i){
+        if(node){
+            printTreeInOrder(node->left, i+1);
+            cout << "<" << node->key << ", " << node->value << ", " << i << ">" << endl;
+            printTreeInOrder(node->right, i+1);
+        }
+    }
+
+    BinaryTreeElement<K, V>* search(BinaryTreeElement<K, V>* node, K key){
+        if(!node)
+            return nullptr;
+
+        if(key == node->key)
+            return node;
+        if(key < node->key)
+            return search(node->left, key);
+        else
+            return search(node->right, key);
+    }
+
+    void insert(BinaryTreeElement<K, V>* node, K key, V value){
+        if(!node){
+            root = new BinaryTreeElement<K, V>(key, value);
+            return;
+        }
+        if(node->key == key)
+            return;
+        BinaryTreeElement<K, V>*& child = (node->key > key) ? node->left : node->right;
+        if (child) {
+            insert(child, key, value);
+        } else {
+            child = new BinaryTreeElement<K, V>(key, value);
+            child->parent = node;
+            fixUp(child);
+        }
+    }
+
+    BinaryTreeElement<K, V>* minimum(BinaryTreeElement<K, V>* node){
+        if(node->left)
+            return minimum(node->left);
+        return node;
+    }
+
+    BinaryTreeElement<K, V>* maximum(BinaryTreeElement<K, V>* node){
+        if(node->right)
+            return maximum(node->right);
+        return node;
+    }
+
+    void transplant(BinaryTreeElement<K, V>* nodeA, BinaryTreeElement<K, V>* nodeB){
+        if(!nodeA->parent){
+            root = nodeB;
+        } else if(nodeA->parent->left == nodeA){
+            nodeA->parent->left = nodeB;
+        } else {
+            nodeA->parent->right = nodeB;
+        }
+
+        if(nodeB){
+            nodeB->parent = nodeA->parent;
+        }
+    }
+    
+    void leftRotate(BinaryTreeElement<K, V>* node){
+        BinaryTreeElement<K, V>* newNode = node->right;
+        if(!newNode)
+            return;
+
+        transplant(node, newNode);
+
+        node->right = newNode->left;
+        if(node->right)
+            node->right->parent = node;
+
+        newNode->left = node;
+        node->parent = newNode;
+    }
+
+    void rightRotate(BinaryTreeElement<K, V>* node){
+        BinaryTreeElement<K, V>* newNode = node->left;
+        if(!newNode)
+            return;
+
+        transplant(node, newNode);
+
+        node->left = newNode->right;
+        if(node->left)
+            node->left->parent = node;
+
+        newNode->right = node;
+        node->parent = newNode;
+    }
+
+    int height(BinaryTreeElement<K, V>* node){
+        if(!node)
+            return 0;
+        return max(height(node->left), height(node->right)) + 1;
+    }
+
+    int balance(BinaryTreeElement<K, V>* node){
+        return height(node->left) - height(node->right);
+    }
+
+    void fixUp(BinaryTreeElement<K, V>* node){
+        int balanced = balance(node);
+        if(balanced >= 2 || balanced <= -2){
+            if(balanced > 0){
+                BinaryTreeElement<K, V>* child = node->left;
+                if(balance(child) < 0){
+                    leftRotate(child);
+                }
+                rightRotate(node);
+            }
+            else{
+                BinaryTreeElement<K, V>* child = node->right;
+                if(balance(child) > 0){
+                    rightRotate(child);
+                }
+                leftRotate(node);
+            }
+        }
+        else{
+            if(node->parent)
+                fixUp(node->parent);
+        }
+    }
 
 
+public:
 
+    BinaryTreeElement<K, V>* root;
 
+    BinaryTree(): root(nullptr) {};
+
+    void insert(K key, V val){
+        insert(root, key, val);
+    }
+
+    void printTree(){
+        printTreeInOrder(root, 0);
+    }
+
+    void remove(K key){
+        BinaryTreeElement<K, V>* deletedNode = search(root, key);
+        if(!deletedNode)
+            return;
+        if(!deletedNode->left)
+            transplant(deletedNode, deletedNode->right);
+        else if(!deletedNode->right)
+            transplant(deletedNode, deletedNode->right);
+        else{
+            BinaryTreeElement<K, V>* newNode = minimum(deletedNode->right);
+            
+            if(deletedNode->right != newNode){
+                transplant(newNode, newNode->right);
+                newNode->right = deletedNode->right;
+                newNode->right->parent = newNode;
+            }
+            transplant(deletedNode, newNode);
+            newNode->left = deletedNode->left;
+            newNode->left->parent = newNode;
+            
+        }
+        if(deletedNode->parent)
+            fixUp(deletedNode->parent);
+        delete deletedNode;
+    }
+
+    V minimum(){
+        return minimum(root)->value;
+    }
+
+    V maximum(){
+        return maximum(root)->value;
+    }
+
+    V search(K key){
+        BinaryTreeElement<K, V>* node = search(root, key);
+        if(!node)
+            return nullptr;
+        return node->value;
+    }
+
+};
 
 int main(){
-
-    Stack<int> stack{};
-    stack.push(50);
-    stack.push(30);
-
-    cout << "Stack: " << endl;
-    cout << stack.pop() << endl;
-    cout << stack.pop() << endl;
-
-    Queue<int> queue{};
-    queue.enqueue(100);
-    queue.enqueue(1);
-    cout << "Queue: " << endl;
-    cout << queue.dequeue() << endl;
-    cout << queue.dequeue() << endl;
-    queue.enqueue(50);
-    cout << queue.dequeue() << endl;
-    queue.enqueue(10);
-
-    LinkedList<int, char> l{};
-    l.insert(1, 'A');
-    l.insert(2, 'B');
-    l.insert(3, 'C');
-    cout << "List: " << endl;
-    cout << l.search(1) << endl;
-    cout << l.search(2) << endl;
-    cout << l.search(3) << endl;
-    l.remove(2);
-    cout << l.search(1) << endl;
-    cout << l.search(3) << endl;
 
     return 0;
 }
